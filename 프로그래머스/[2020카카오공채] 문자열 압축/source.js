@@ -9,13 +9,13 @@ function solution(s) {
         .map(partial1(findAnswer, s))
         .reduce((cur, nxt) => {
             return cur > nxt ? nxt : cur;
-         }, s.length);
+        }, s.length);
 }
 function findAnswer(target, size){
     return chain(target, partial1(split, ''), partial1(tie, size),zip, toString, length);
 }
-function split(delimeter,target){
-    return target.split(delimeter);
+function split(delimiter,target){
+    return target.split(delimiter);
 }
 function chain(...args){
     const target = args.shift();
