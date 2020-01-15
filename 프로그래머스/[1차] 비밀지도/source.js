@@ -7,11 +7,9 @@ function solution(n, arr1, arr2) {
     return chain({arr1, arr2}, merge, hash);
 }
 function merge({arr1, arr2}){
-    return [...Array(arr1.length)].map((it, index) => arr1[index] | arr2[index]);
+    return arr1.map((it, index) => it | arr2[index]);
 }
 function hash(arr){
     const n = arr.length;
-    return arr.map(item => {
-        return [...Array(n)].map((it, index) => 2**index).reverse().map(it => it & item ? '#' : ' ').join('')
-    });
+    return arr.map(item => item.toString(2).padStart(n, 0).replace(/0/g,' ').replace(/1/g, '#'));
 }
